@@ -8,13 +8,13 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',async(req,res)=>{
-    const {adminEmail,admiPassword} = req.body;
+    const {adminEmail,adminPassword} = req.body;
 
     const adsig = await adsign.findOne({adminEmail});
     try{
         if(!adsig){
             return res.send('user does not exist');
-        }if(admiPassword !== adsig.admiPassword){
+        }if(adminPassword !== adsig.adminPassword){
            return res.send('password did not much')
         }
         return res.render('adminHomepage')

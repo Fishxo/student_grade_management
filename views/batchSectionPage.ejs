@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h2><%= dept.deptName %> - Students</h2>
+
+<h1><%= dept.deptName %> - Students</h1>
+
+<% if (stu && stu.length > 0) { %>
+  <ul>
+    <% stu.forEach(s => { %>
+      <li><%= s.studFname %> <%= s.studSname %> - Batch: <%= s.studyBatch %></li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No students found</p>
+<% } %>
+
+</body>
+</html>
