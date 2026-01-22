@@ -13,9 +13,9 @@ const adminLOGINRoutes = require('./route/adminLOGIN.route');
 const studregRoutes = require('./route/studreg.route');
 const newDeptRoutes = require('./route/newDept.route');
 const deptFetchRoutes = require('./route/deptFetch.route');
-//const batchRoutes = require('./route/batch.route'); // your batch.route.js
 const deptRoutes = require('./route/deptFetch.route');
-
+const deptCourseRoutes = require('./route/deptFetch.route');
+const studLOGINRoutes = require('./route/studLOGIN.route');
 
 //using routes file
 app.use('/adminfirst',adminFirstpageRoutes);
@@ -24,8 +24,9 @@ app.use('/adminLOGIN',adminLOGINRoutes);
 app.use('/studreg',studregRoutes);
 app.use('/newDept',newDeptRoutes);
 app.use('/deptFetch',deptFetchRoutes);
-//app.use('/deptFetch', batchRoutes);
 app.use('/dept', deptRoutes); // now /dept and /dept/:id will work
+app.use('/deptc',deptCourseRoutes);
+app.use('/studlogin',studLOGINRoutes);
 
 
 // making a connection to database

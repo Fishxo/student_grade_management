@@ -13,20 +13,46 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:deptId', async (req, res) => {
   try {
-     const deptData = await dept.findById(req.params.id);
-    if (!deptData) return res.send('Department not found');
-    
-   const students = await regstud.find({
-  studDept: { $regex: new RegExp('^' + deptData.deptName + '$', 'i') }
-});
-     res.render('batchSectionPage', { dept: deptData, stu: students });
+    const { deptId } = req.params;
+    const { batch, section } = req.query;
 
+    const deptData = await dept.findById(deptId);
+    if (!deptData) return res.send('Department not found');
+
+    const batches = await regstud.distinct('studyBatch', {
+      studDept: deptData.deptName
+    });
+
+    let students = [];
+
+    if (batch) {
+      students = await regstud.find({
+        studDept: { $regex: new RegExp('^' + deptData.deptName + '$', 'i') },
+        studyBatch: batch
+      });
+    }
+
+    res.render('batchSectionPage', {
+      dept: deptData,
+      batches,
+      selectedBatch: batch || '',
+      selectedSection: section || '',
+      stu: students
+    });
   } catch (err) {
     console.log(err);
-    res.send('cannot fetch department details');
+    res.send('error loading department students');
   }
 });
+ //getting an addnig course for every departments
+ router.get('/:deptId/createCourse',(req,res)=>{
+  const deptId = req.params.deptId;
+  const deptData =  dept.findById(deptId)
+   res.render('createCourse')
+ })
+
+
 
 module.exports = router;

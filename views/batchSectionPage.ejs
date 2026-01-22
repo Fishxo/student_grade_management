@@ -6,20 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-    
-<h2><%= dept.deptName %> - Students</h2>
+    <h3>Select Batch</h3>
+     <form action="/createCours" method="get">
+    <button type="submit">create courses</button>
+  </form>
+<% batches.forEach(b => { %>
+  <a href="/dept/<%= dept._id%>?batch=<%= b %>">
+    <button><%= b %></button>
+  </a>
+ 
+<% }) %>
 
-<h1><%= dept.deptName %> - Students</h1>
+<% if (selectedBatch) { %>
+  <h3>Student List (Batch <%= selectedBatch %>)</h3>
 
-<% if (stu && stu.length > 0) { %>
-  <ul>
-    <% stu.forEach(s => { %>
-      <li><%= s.studFname %> <%= s.studSname %> - Batch: <%= s.studyBatch %></li>
-    <% }) %>
-  </ul>
-<% } else { %>
-  <p>No students found</p>
+  <% if (stu.length > 0) { %>
+    <ul>
+      <% stu.forEach(s => { %>
+        <li>
+          <%= s.studFname %> <%= s.studSname %>
+          - Section: <%= s.section %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No students found</p>
+  <% } %>
 <% } %>
+
 
 </body>
 </html>
