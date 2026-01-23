@@ -6,7 +6,7 @@ const router = express.Router();
 const addcourseSchema = mongoose.Schema({
     courseTitle : String,
     courseCode : String,
-    courseDesc : String
+    courseDesc : String,
 })
 
 //declaring a model for student course

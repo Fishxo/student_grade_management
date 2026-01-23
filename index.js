@@ -16,6 +16,7 @@ const deptFetchRoutes = require('./route/deptFetch.route');
 const deptRoutes = require('./route/deptFetch.route');
 const deptCourseRoutes = require('./route/deptFetch.route');
 const studLOGINRoutes = require('./route/studLOGIN.route');
+const editRoutes = require('./route/deptFetch.route');
 
 //using routes file
 app.use('/adminfirst',adminFirstpageRoutes);
@@ -27,7 +28,7 @@ app.use('/deptFetch',deptFetchRoutes);
 app.use('/dept', deptRoutes); // now /dept and /dept/:id will work
 app.use('/deptc',deptCourseRoutes);
 app.use('/studlogin',studLOGINRoutes);
-
+app.use('/deptt',editRoutes);
 
 // making a connection to database
 mongoose.connect('mongodb://localhost:27017/student_grade_mgt_system')

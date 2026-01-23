@@ -4,12 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+       <style>
+        /* General Body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        /* Forms and Buttons */
+        form {
+            display: inline-block;
+            margin: 10px 10px 20px 0;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Student List */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        li:hover {
+            background-color: #d0d7de;
+        }
+
+        p {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            button {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            form {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
     <h3>Select Batch</h3>
-     <form action="/createCours" method="get">
+     <form action="/deptc/<%= dept._id %>/createcours" method="get">
     <button type="submit">create courses</button>
   </form>
+  <form action="/deptc/<%= dept._id%>/fetchcourse" method="get">
+    <button type="submit">fetch courses</button>
+  </form>
+  
 <% batches.forEach(b => { %>
   <a href="/dept/<%= dept._id%>?batch=<%= b %>">
     <button><%= b %></button>
@@ -24,11 +104,16 @@
     <ul>
       <% stu.forEach(s => { %>
         <li>
-          <%= s.studFname %> <%= s.studSname %>
-          - Section: <%= s.section %>
+     
+<b>first name</b><%= s.studFname %> <b>second name </b> <%= s.studSname %> <b>stud email</b>
+        <%= s.studEmail%> <b>stud department</b> <%= s.studDept%> <b>study batch </b><%= s.studyBatch%>
+           <form action="/deptt/<%= s._id%>/edit" method="get">
+      <button>✏️</button>
+    </form>
         </li>
       <% }) %>
     </ul>
+   
   <% } else { %>
     <p>No students found</p>
   <% } %>

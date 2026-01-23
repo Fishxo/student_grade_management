@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+            <form action="/deptt/<%= studs._id%>/update" method="post">
+            <label for="studFname">student first name</label><br>
+            <input type="text" name="studFname" value="<%= studs.studFname%>" required><br>
+            <label for="studSname">student second name</label><br>
+            <input type="text" name="studSname" value="<%= studs.studSname%>" required><br>
+            <label for="studEmail">student email</label><br>
+            <input type="text" name="studEmail" value="<%= studs.studEmail%>" required><br>
+            <label for="studDept">student department</label><br>
+            <input type="text" name="studDept" value="<%= studs.studDept%>" required><br>
+            <label for="studyBatch">study batch</label><br>
+            <input type="text" name="studyBatch" value="<%= studs.studyBatch%>" required><br>
+            <button type="submit">save</button>
+            </form>
+</body>
+</html>
