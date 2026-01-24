@@ -8,7 +8,7 @@
 <body>
     <% stud.forEach(st => { %>
   <form action="/dept/<%= st._id %>" method="get">
-    <button type="submit"><%= st.deptName %></button>
+    <button type="submit"><%= st.deptName %><%= st.deptCode%></button>
   </form>
 <% }) %>
 

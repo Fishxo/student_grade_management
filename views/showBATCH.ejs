@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-       <style>
+      <style>
         /* General Body */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -82,18 +82,34 @@
     </style>
 </head>
 <body>
-    <h3>Select Batch</h3>
-     <form action="/deptc/<%= dept._id %>/createcours" method="get">
-    <button type="submit">create courses</button>
-  </form>
-  <form action="/deptc/<%= dept._id%>/fetchcourse" method="get">
-    <button type="submit">fetch courses</button>
-  </form>
-    <form action="/batch/<%= dept._id%>/batches" method="get">
-        <button type="submit">batches</button>
-    </form>
+    <% batches.forEach(b => { %>
+  <a href="/batch/<%= dept._id%>/batches?batch=<%= b %>">
+    <button><%= b %></button>
+  </a>
  
+<% }) %>
 
+<% if (selectedBatch) { %>
+  <h3>Student List (Batch <%= selectedBatch %>)</h3>
+
+  <% if (stu.length > 0) { %>
+    <ul>
+      <% stu.forEach(s => { %>
+        <li>
+     
+<b>first name</b><%= s.studFname %> <b>second name </b> <%= s.studSname %> <b>stud email</b>
+        <%= s.studEmail%> <b>stud department</b> <%= s.studDept%> <b>study batch </b><%= s.studyBatch%>
+           <form action="/deptt/<%= s._id%>/edit" method="get">
+      <button>✏️</button>
+    </form>
+        </li>
+      <% }) %>
+    </ul>
+   
+  <% } else { %>
+    <p>No students found</p>
+  <% } %>
+<% } %>
 
 </body>
 </html>

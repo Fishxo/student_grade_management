@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>creating course for 
+    <%= dept.deptName%></h2>
+    <form action="/deptc/<%= dept._id%>/createCourse" method="post">
+        <label for="courseTitle">course title</label><br>
+        <input type="text" name="courseTitle" required><br>
+        <label for="courseCode">corse code</label><br>
+        <input type="text" name="courseCode" required><br>
+        <label for="courseDesc">course description</label><br>
+        <input type="text" name="courseDesc" required><br>
+        <button type="submit">create course</button>
+    </form>
+</body>
+</html>

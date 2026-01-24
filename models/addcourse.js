@@ -7,6 +7,10 @@ const addcourseSchema = mongoose.Schema({
     courseTitle : String,
     courseCode : String,
     courseDesc : String,
+    dept :{
+        type :mongoose.Schema.Types.ObjectId,
+        ref : 'dept'
+    }
 })
 
 //declaring a model for student course
