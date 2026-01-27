@@ -136,7 +136,7 @@ router.post('/:deptId/createCourse', async (req, res) => {
   })
 
  //getting an edit button and update page for course edit
- router.get('/:courseId/Course',async(req,res)=>{
+ router.get('/:deptId/:courseId/Course',async(req,res)=>{
   
    const {courseId,deptId} = req.params;
 
@@ -146,10 +146,11 @@ router.post('/:deptId/createCourse', async (req, res) => {
       res.render('UPDATEcourse',{core,dept:deptData})
  })
 // recieved datas from updatecourse page and make save to database
- router.post('/:courseId/updatee',async(req,res)=>{
+ router.post('/:deptId/:courseId/updatee',async(req,res)=>{
    
   const {courseTitle,courseCode,courseDesc,deptId} = req.body;
   try{
+    const deptId = req.params.deptId;
     const {courseId} = req.params;
     const deptData = await dept.findById(deptId)
     const core = await addcor.findById(courseId);
@@ -169,6 +170,22 @@ router.post('/:deptId/createCourse', async (req, res) => {
   }
  })
 
+//getting a delete requiest and deleting courses
+router.post('/:deptId/:courseId/delete',async(req,res)=>{
+  
+  const {deptId,courseId} = req.params;
+   const deptData = await dept.findById(deptId);
+   const course = await addcor.findById(courseId);
+   try{
+          await addcor.findByIdAndDelete(courseId);
+          const cour = await addcor.find({dept:deptId});
+         return res.render('fetchcourse',{fetchcours:cour, dept:deptData});
+         return res.send('course deleted successfully')
+   }catch(error){
+    console.log(error)
+    res.send('can not delet this course');
+   }
+})
   //getting from update button and save to database
   router.post('/:studentId/update',async(req,res)=>{
    const {studentId} = req.params;
@@ -189,7 +206,7 @@ router.post('/:deptId/createCourse', async (req, res) => {
       await student.save();
       const deptData = await dept.findOne({ deptName: student.studDept });
       console.log(studentId);
-   return res.render('batchSectionPage',{ 
+   return res.render('showBATCH',{ 
       stu: [student], 
       dept: deptData,
      batches: [], 
@@ -204,6 +221,19 @@ router.post('/:deptId/createCourse', async (req, res) => {
     
    }
 
+  })
+
+  router.post('/:studId/delete',async(req,res)=>{
+    const {studId} = req.params;
+    const deptData = regstud.findById(studId)
+    try{
+      await regstud.findByIdAndDelete(studId)
+      const stud = await regstud.findById(studId)
+      res.render('showBATCH',{stu:stud})
+    }catch(error){
+      console.log(error)
+      res.send('can not delete student')
+    }
   })
   
 module.exports = router;

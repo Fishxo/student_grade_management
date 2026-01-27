@@ -4,16 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    padding: 40px;
+}
+
+.container {
+    background: #fff;
+    padding: 40px;
+    width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #11998e;
+    font-size: 22px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #11998e;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(17, 153, 142, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #11998e;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #0e7d6f;
+    transform: translateY(-2px);
+}
+
+    </style>
 </head>
 <body>
+    <div class="container">
+    <h2>Create Department</h2>
+
     <form action="/newDept" method="post">
-        <label for="deptName">department title</label><br>
-        <input type="text" name="deptName" required><br>
-        <label for="deptCode">department code</label><br>
-        <input type="text" name="deptCode" required><br>
-        <label for="deptDesc">department description</label><br>
-        <input type="text" name="deptDesc" required><br>
-        <button type="submit">create department</button>
+        <label for="deptName">Department Title</label>
+        <input type="text" name="deptName" required>
+
+        <label for="deptCode">Department Code</label>
+        <input type="text" name="deptCode" required>
+
+        <label for="deptDesc">Department Description</label>
+        <input type="text" name="deptDesc" required>
+
+        <button type="submit">Create Department</button>
     </form>
+</div>
+
 </body>
 </html>

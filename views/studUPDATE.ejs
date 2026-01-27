@@ -4,21 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+  <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    padding: 40px;
+}
+
+.container {
+    background: #fff;
+    padding: 40px 35px;
+    width: 450px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #2575fc;
+    font-size: 22px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #2575fc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2575fc;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #1e5fd1;
+    transform: translateY(-2px);
+}
+  </style>
+
 </head>
 <body>
    
-            <form action="/deptt/<%= studs._id%>/update" method="post">
-            <label for="studFname">student first name</label><br>
-            <input type="text" name="studFname" value="<%= studs.studFname%>" required><br>
-            <label for="studSname">student second name</label><br>
-            <input type="text" name="studSname" value="<%= studs.studSname%>" required><br>
-            <label for="studEmail">student email</label><br>
-            <input type="text" name="studEmail" value="<%= studs.studEmail%>" required><br>
-            <label for="studDept">student department</label><br>
-            <input type="text" name="studDept" value="<%= studs.studDept%>" required><br>
-            <label for="studyBatch">study batch</label><br>
-            <input type="text" name="studyBatch" value="<%= studs.studyBatch%>" required><br>
-            <button type="submit">save</button>
-            </form>
+           <div class="container">
+    <h2>Edit Student</h2>
+
+    <form action="/deptt/<%= studs._id %>/update" method="post">
+        <label for="studFname">Student First Name</label>
+        <input type="text" name="studFname" value="<%= studs.studFname %>" required>
+
+        <label for="studSname">Student Second Name</label>
+        <input type="text" name="studSname" value="<%= studs.studSname %>" required>
+
+        <label for="studEmail">Student Email</label>
+        <input type="text" name="studEmail" value="<%= studs.studEmail %>" required>
+
+        <label for="studDept">Student Department</label>
+        <input type="text" name="studDept" value="<%= studs.studDept %>" required>
+
+        <label for="studyBatch">Study Batch</label>
+        <input type="text" name="studyBatch" value="<%= studs.studyBatch %>" required>
+
+        <button type="submit">Save</button>
+    </form>
+</div>
+
 </body>
 </html>

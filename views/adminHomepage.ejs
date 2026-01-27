@@ -4,17 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* Container */
+.container {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+}
+
+/* Heading */
+.container h1 {
+    margin-bottom: 30px;
+    color: #2a5298;
+    font-size: 22px;
+}
+
+/* Forms */
+form {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2a5298;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #1e3c72;
+    transform: translateY(-2px);
+}
+
+    </style>
 </head>
 <body>
-    <h1>welcome to admin page </h1>
-       <form action="/studreg" method="get">
-        <button type="submit">register student</button>
-       </form>
-       <form action="/newDept" method="get">
-        <button type="submit">create department</button>
-       </form>
-       <form action="/deptFetch" method="get">
-        <button type="submit">fetch department</button>
-       </form>
+  <div class="container">
+    <h1>Welcome to Admin Page</h1>
+
+    <form action="/studreg" method="get">
+        <button type="submit">Register Student</button>
+    </form>
+
+    <form action="/newDept" method="get">
+        <button type="submit">Create Department</button>
+    </form>
+
+    <form action="/deptFetch" method="get">
+        <button type="submit">Fetch Department</button>
+    </form>
+</div>
+
 </body>
 </html>

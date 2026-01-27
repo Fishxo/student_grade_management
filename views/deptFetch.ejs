@@ -4,13 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.container h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #2c5364;
+}
+
+form {
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #2c5364;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #203a43;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
 </head>
 <body>
+   <div class="container">
+    <h2>Select Department</h2>
+
     <% stud.forEach(st => { %>
-  <form action="/dept/<%= st._id %>" method="get">
-    <button type="submit"><%= st.deptName %><%= st.deptCode%></button>
-  </form>
-<% }) %>
+        <form action="/dept/<%= st._id %>" method="get">
+            <button type="submit">
+                <%= st.deptName %> - <%= st.deptCode %>
+            </button>
+        </form>
+    <% }) %>
+</div>
+
 
 </body>
 </html>
