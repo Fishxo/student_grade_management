@@ -102,8 +102,8 @@
            <form action="/deptt/<%= s._id%>/edit" method="get">
       <button>✏️</button>
     </form>
-        <form action="/deptt/<%= s._id%>/delete" method="post">
-            <button type="button">delete</button>
+        <form action="/deptt/<%= dept._id%>/<%= s._id%>/deletee" method="post">
+            <button type="submit">delete</button>
         </form>
         </li>
       <% }) %>

@@ -13,12 +13,12 @@ const adminLOGINRoutes = require('./route/adminLOGIN.route');
 const studregRoutes = require('./route/studreg.route');
 const newDeptRoutes = require('./route/newDept.route');
 const deptFetchRoutes = require('./route/deptFetch.route');
-const deptRoutes = require('./route/deptFetch.route');
-const deptCourseRoutes = require('./route/deptFetch.route');
+const individualdepartRoutes = require('./route/individualDEPARTMENT.route');
+const NEWcourseRoutes = require('./route/createNEWCOURSE.route');
 const studLOGINRoutes = require('./route/studLOGIN.route');
-const editRoutes = require('./route/deptFetch.route');
-const batchesRoutes = require('./route/deptFetch.route');
-const courseeditRoutes = require('./route/deptFetch.route');
+const editRoutes = require('./route/STUDENT.route');
+const batchesRoutes = require('./route/batches.route');
+const courseeditRoutes = require('./route/createNEWCOURSE.route');
 
 //using routes file
 app.use('/adminfirst',adminFirstpageRoutes);
@@ -27,8 +27,8 @@ app.use('/adminLOGIN',adminLOGINRoutes);
 app.use('/studreg',studregRoutes);
 app.use('/newDept',newDeptRoutes);
 app.use('/deptFetch',deptFetchRoutes);
-app.use('/dept', deptRoutes); // now /dept and /dept/:id will work
-app.use('/deptc',deptCourseRoutes);
+app.use('/dept', individualdepartRoutes); // now /dept and /dept/:id will work
+app.use('/deptc',NEWcourseRoutes);
 app.use('/studlogin',studLOGINRoutes);
 app.use('/deptt',editRoutes);
 app.use('/batch',batchesRoutes);
