@@ -8,6 +8,10 @@ const studregSchema = mongoose.Schema({
     studEmail : String,
     studDept  : String,
     studyBatch : String,
+    course: [{
+   type : mongoose.Schema.Types.ObjectId,
+   ref : 'course',
+    }]
 })
 
 const studreg = mongoose.model('students',studregSchema);
