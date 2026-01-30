@@ -28,11 +28,14 @@ router.post('/:deptId/:studId',async(req,res)=>{
 
 //getting stuents courses pages 
 router.get('/:deptId/:studId/course', async (req, res) => {
+  const {deptId,studId} = req.params;
+  const deptData = await dept.findById(deptId);
+
   const student = await regstud
     .findById(req.params.studId)
     .populate('course');
 
-  res.render('studentCourses', { student });
+  res.render('studentCourses', { student,dept:deptData,stud:student });
 });
 
 module.exports = router;

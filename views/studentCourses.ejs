@@ -10,7 +10,9 @@
         <ul>
             <li>
                 <%  student.course.forEach(st =>{%>
-                   <%= st.courseTitle%> <br>
+                   <button><%= st.courseTitle%></button> <form action="/grade/<%= dept._id%>/<%= stud._id%>" method="get">
+                    <button type="submit">grade submit</button>
+                   </form> <br>
                <% } )%>
             </li>
         </ul>
