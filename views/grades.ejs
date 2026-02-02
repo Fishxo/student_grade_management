@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grade-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .grade-item:last-child {
+      border-bottom: none;
+    }
+
+    .no-grade {
+      text-align: center;
+      color: gray;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2><%= stude.studFname %>'s Grades</h2>
+
+    <% if (gradee.length > 0) { %>
+      <% gradee.forEach(gr => { %>
+        <div class="grade-item">
+          <span><%= gr.course.courseTitle %></span>
+          <strong><%= gr.grade %></strong>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <div class="no-grade">There is no grade</div>
+    <% } %>
+
+  </div>
+
+</body>
+</html>

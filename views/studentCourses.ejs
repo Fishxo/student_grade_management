@@ -1,20 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Courses</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-top: 40px;
+    }
+
+    /* Card for action buttons */
+    .action-card {
+      max-width: 400px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .action-card form {
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .action-card button {
+      background: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .action-card button:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    /* Courses list below */
+    .courses-container {
+       display: flex;
+    flex-direction: column; /* vertical stack */
+    align-items: flex-start; /* align to the left */
+    gap: 10px; /* space between buttons */
+    padding: 10px;
+    }
+
+    .course-btn {
+      background: #1abc9c;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .course-btn:hover {
+      background: #16a085;
+      transform: translateY(-2px);
+    }
+
+    @media(max-width: 500px) {
+      .action-card, .courses-container {
+        width: 90%;
+      }
+      .course-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h2><%= student.studFname%> takes those courses</h2>
-        <ul>
-            <li>
-                <%  student.course.forEach(st =>{%>
-                   <button><%= st.courseTitle%></button> <form action="/grade/<%= dept._id%>/<%= stud._id%>" method="get">
-                    <button type="submit">grade submit</button>
-                   </form> <br>
-               <% } )%>
-            </li>
-        </ul>
+
+  <h2><%= student.studFname %> takes these courses</h2>
+
+  <!-- Action buttons card -->
+  <div class="action-card">
+    <form action="/grade/<%= dept._id%>/<%= stud._id%>" method="get">
+      <button type="submit">Grade Submit</button>
+    </form>
+    <form action="/grade/<%= dept._id%>/<%= stud._id%>/grades" method="get">
+      <button type="submit">View Grades</button>
+    </form>
+  </div>
+
+  <!-- Courses buttons below -->
+  <div class="courses-container">
+    <% student.course.forEach(st => { %>
+      <button class="course-btn"><%= st.courseTitle %></button>
+    <% }) %>
+  </div>
+
 </body>
 </html>

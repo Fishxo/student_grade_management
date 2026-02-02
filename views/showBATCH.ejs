@@ -103,7 +103,7 @@
       <button>✏️</button>
     </form>
         <form action="/deptt/<%= dept._id%>/<%= s._id%>/deletee" method="post">
-            <button type="submit">delete</button>
+            <button type="submit" onclick="return confirm('are you sure to delete this user')">delete</button>
         </form>
         <form action="/assigncourse/<%= dept._id%>/<%= s._id%>/" method="get">
     <button type="submit">assign course</button>
