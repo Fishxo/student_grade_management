@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>updating a <h1><%= dept.deptName%></h1> department</p>
+   
+      <form action="/deptFetch/<%= dept._id%>/update" method="post">
+        <label for="deptName">department name</label><br>
+        <input type="text" name="deptName" value="<%= dept.deptName%>" required><br>
+        <label for="deptCode">department code </label><br>
+        <input type="text" name="deptCode" value="<%= dept.deptCode%>" required><br>
+        <label for="deptDesc">department Description</label><br>
+        <input type="text" name="deptDesc" value="<%= dept.deptDesc%>" required><br>
+        <button type="submit">save</button>
+      </form>
+</body>
+</html>

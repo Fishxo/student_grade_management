@@ -90,7 +90,7 @@
 <% }) %>
 
 <% if (selectedBatch) { %>
-  <h3>Student List (Batch <%= selectedBatch %>)</h3> 
+  <h3>Student List <%= dept.deptName%> department (Batch <%= selectedBatch %>)</h3> 
 
   <% if (stu.length > 0) { %>
     <ul>
@@ -111,6 +111,9 @@
 
  <form action="/assigncourse/<%= dept._id%>/<%= s._id%>/course" method="get">
     <button type="submit">courses</button>
+ </form>
+ <form action="/studProfile/<%= dept._id%>/<%= s._id%>" method="get">
+    <button type="submit">student profile</button>
  </form>
         </li>
       <% }) %>

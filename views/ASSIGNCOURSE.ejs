@@ -8,7 +8,7 @@
 <body>
     
 
-        <h3>Assign course to <%= student.studFname %></h3> 
+        <h3>Assign course to <%= student.studFname %> from <b><%= deptt.deptName%></b> department</h3> 
 
 <form action="/assc/<%= deptt._id %>/<%= student._id %>" method="post">
 

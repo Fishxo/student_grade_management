@@ -22,6 +22,8 @@ const courseeditRoutes = require('./route/createNEWCOURSE.route');
 const assignCOURSERoutes = require('./route/ASSIGNCOURSE.route');
 const assigncOURSERoutes = require('./route/ASSIGNCOURSE.route');
 const assignGRADERoutes = require('./route/GRADESUBMITION.route');
+const studentProfileRoutes = require('./route/studentProfile.route');
+
 
 //using routes file
 app.use('/adminfirst',adminFirstpageRoutes);
@@ -39,6 +41,7 @@ app.use('/Cedit',courseeditRoutes);
 app.use('/assigncourse',assignCOURSERoutes);
 app.use('/assc',assigncOURSERoutes);
 app.use('/grade',assignGRADERoutes);
+app.use('/studProfile',studentProfileRoutes)
 
 // making a connection to database
 mongoose.connect('mongodb://localhost:27017/student_grade_mgt_system')

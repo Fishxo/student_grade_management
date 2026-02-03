@@ -6,72 +6,112 @@
     <title>Document</title>
     <style>
       * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-}
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+      }
 
-.container {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
-    width: 500px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
+      .container {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 16px;
+        width: 500px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
 
-.container h2 {
-    margin-bottom: 25px;
-    text-align: center;
-    color: #2c5364;
-}
+      .container h2 {
+        margin-bottom: 25px;
+        text-align: center;
+        color: #2c5364;
+      }
 
-form {
-    margin-bottom: 15px;
-}
+      .dept-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
 
-button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    background: #2c5364;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+      .dept-row form {
+        margin: 0;
+      }
 
-button:hover {
-    background: #203a43;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
+      .dept-btn {
+        flex: 1; /* department button takes remaining space */
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: #2c5364;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
+      .dept-btn:hover {
+        background: #203a43;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .delete-btn {
+        width: 80px; /* fixed small width for delete button */
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: #ff4d4f;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+        .edit-btn {
+        width: 80px; /* fixed small width for delete button */
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: #ff4d4f;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .delete-btn:hover {
+        background: #d9363e;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
     </style>
 </head>
 <body>
    <div class="container">
-    <h2>Select Department</h2>
+      <h2>Select Department</h2>
 
-    <% stud.forEach(st => { %>
-        <form action="/dept/<%= st._id %>" method="get">
-            <button type="submit">
-                <%= st.deptName %> - <%= st.deptCode %>
-            </button>
-        </form>
-    <% }) %>
-</div>
+      <% dept.forEach(st => { %>
+        <div class="dept-row">
+          <form action="/dept/<%= st._id %>" method="get">
+              <button type="submit" class="dept-btn">
+                  <%= st.deptName %> - <%= st.deptCode %>
+              </button>
+          </form>
+          <form action="/deptFetch/<%= st._id%>/edit" method="get">
+            <button class="edit-btn" type="submit">✏️ Edit</button>
+          </form>
+          <form action="/deptFetch/<%= st._id%>/delete" method="post">
+              <button type="submit" class="delete-btn" onclick="return confirm('Are you sure about deleting department?')">Delete</button>
+          </form>
+        </div>
+      <% }) %>
 
-
+   </div>
 </body>
 </html>

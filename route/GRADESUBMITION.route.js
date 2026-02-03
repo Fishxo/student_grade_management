@@ -39,6 +39,8 @@ try{
     }
 }
     }) 
+    //fetching student with their grades 
+    
 router.get('/:deptId/:studId/grades',async(req,res)=>{
       const {deptId,studId} = req.params;
       
