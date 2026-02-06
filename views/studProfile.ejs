@@ -14,6 +14,7 @@ body {
 }
 
 .profile-card {
+   margin-top: 40px;
     background: #fff;
     width: 350px;
     padding: 25px;
@@ -36,6 +37,8 @@ body {
 }
 
 .button-group {
+   margin-top: 35px;
+    margin-bottom: -65px;
     display: flex;
     gap: 10px;
 }
@@ -88,6 +91,9 @@ body {
 
     <form action="/studCOURSE/<%= depta._id %>/<%= stud._id %>/course" method="get">
         <button type="submit" class="btn btn-course">Courses</button>
+    </form>
+    <form action="/studCREDIT/<%= depta._id%>/<%= stud._id%>/credit" method="get">
+      <button type="submit" class="btn btn-course"> course credit</button>
     </form>
 </div>
 

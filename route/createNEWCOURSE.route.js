@@ -13,9 +13,10 @@ const addcor = require('../models/addcourse')
  //recived a new courses and saving to databas
  router.post('/:deptId/createCourse', async (req, res) => {
    const deptId = req.params.deptId;
-   const { courseTitle, courseCode, courseDesc } = req.body;
+   const { courseTitle, courseCode, credit, courseDesc } = req.body;
     const addc = new addcor({ courseTitle,
    courseCode,
+   credit,
    courseDesc,
    dept: deptId});
    try{
@@ -55,7 +56,7 @@ const addcor = require('../models/addcourse')
   // recieved datas from updatecourse page and make save to database
    router.post('/:deptId/:courseId/updatee',async(req,res)=>{
      
-    const {courseTitle,courseCode,courseDesc,deptId} = req.body;
+    const {courseTitle,courseCode,credit,courseDesc,deptId} = req.body;
     try{
       const deptId = req.params.deptId;
       const {courseId} = req.params;
@@ -65,6 +66,7 @@ const addcor = require('../models/addcourse')
   
       core.courseTitle = courseTitle,
       core.courseCode  = courseCode,
+      core.credit      = credit,
       core.courseDesc  = courseDesc
   
       await core.save()

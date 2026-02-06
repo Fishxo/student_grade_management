@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    padding: 40px;
+    color: #333;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.courses-container {
+    display: flex;
+    flex-direction: column; /* vertical list */
+    gap: 12px;
+    max-width: 500px;
+}
+
+.course-card {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+</style>
+
 </head>
 <body>
-    <h2><%= student.studFname %> takes these courses</h2>
+  <body>
+    <h2><%= stude.studFname %> takes these courses</h2>
 
     <div class="courses-container">
-    <% student.course.forEach(st => { %>
-      <button class="course-btn"><%= st.courseTitle %></button>
-    <% }) %>
-  </div>
+        <% stude.course.forEach(st => { %>
+            <div class="course-card"><%= st.courseTitle %></div>
+            <form action="/studCREDIT/<%= dept._id%>/<%= stude._id%>/delet" method="post">
+              <button type="submit">delete</button>
+            </form>
+        <% }) %>
+    </div>
+</body>
+
 </body>
 </html>

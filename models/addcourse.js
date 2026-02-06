@@ -10,6 +10,10 @@ const addcourseSchema = mongoose.Schema({
     dept :{
         type :mongoose.Schema.Types.ObjectId,
         ref : 'dept'
+    },
+    credit :{
+        type:Number,
+        required:true
     }
 })
 
