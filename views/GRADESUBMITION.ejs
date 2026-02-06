@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      text-align: center;
+    }
+
+    h4 {
+      margin-top: 25px; /* moves h4 down */
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    select {
+      padding: 8px;
+      margin: 10px 0;
+      width: 200px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      background-color: #2c7be5;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a5fd0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <%= dept.deptName %>
+
+  <h4>hello this is a grade submission page for <%= stud.studFname %></h4>
+
+  <form action="/grade/<%= dept._id%>/<%= stud._id%>" method="post">
+
+    <h4>Course</h4>
+    <select name="courseId" required>
+      <% course.forEach(c => { %>
+        <option value="<%= c._id %>"><%= c.courseTitle %></option>
+      <% }) %>
+    </select>
+
+    <h4>Grade</h4>
+    <select name="grade">
+      <option value="a+">a+</option>
+      <option value="a">a</option>
+      <option value="a-">a-</option>
+      <option value="b+">b+</option>
+      <option value="b">b</option>
+      <option value="b-">b-</option>
+      <option value="c">c</option>
+    </select>
+
+    <br><br>
+    <button type="submit">Assign Grade</button>
+
+  </form>
+
+</body>
+</html>

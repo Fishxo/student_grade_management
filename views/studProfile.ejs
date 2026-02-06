@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Profile</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: aliceblue;
+    margin: 0;
+    padding: 40px;
+}
+
+.profile-card {
+    background: #fff;
+    width: 350px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.profile-card h2 {
+    margin-bottom: 15px;
+    color: #2a5298;
+}
+
+.info {
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.info span {
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-grade {
+    background-color: #2a5298;
+    color: white;
+}
+
+.btn-grade:hover {
+    background-color: #1e3c72;
+}
+
+.btn-course {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-course:hover {
+    background-color: #1e7e34;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="profile-card">
+    <h2>Student Profile</h2>
+
+    <div class="info">
+        <div><span>Name:</span> <%= stud.studFname %> <%= stud.studSname %></div>
+        <div><span>Department:</span> <%= stud.studDept %></div>
+        <div><span>Batch:</span> <%= stud.studyBatch %></div>
+    </div>
+
+    <div class="button-group">
+    <form action="/studeGRADE/<%= depta._id %>/<%= stud._id %>/grades" method="get">
+        <button type="submit" class="btn btn-grade">Grades</button>
+    </form>
+
+    <form action="/studCOURSE/<%= depta._id %>/<%= stud._id %>/course" method="get">
+        <button type="submit" class="btn btn-course">Courses</button>
+    </form>
+</div>
+
+
+</div>
+
+</body>
+</html>
