@@ -47,9 +47,7 @@ h2 {
     <div class="courses-container">
         <% stude.course.forEach(st => { %>
             <div class="course-card"><%= st.courseTitle %></div>
-            <form action="/studCREDIT/<%= dept._id%>/<%= stude._id%>/delet" method="post">
-              <button type="submit">delete</button>
-            </form>
+           
         <% }) %>
     </div>
 </body>

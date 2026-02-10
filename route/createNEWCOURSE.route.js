@@ -30,9 +30,9 @@ const addcor = require('../models/addcourse')
  
 //fetching those courses 
  router.get('/:deptId/fetchcourse',async(req,res)=>{
-        
-      try{
         const deptId = req.params.deptId;
+      try{
+        
     const deptData = await dept.findById(deptId)
        const fetchC = await addcor.find({dept:deptId});
        return res.render('fetchcourse',{fetchcours:fetchC,dept:deptData})
@@ -50,7 +50,7 @@ const addcor = require('../models/addcourse')
     const deptData = await dept.findById(deptId);
     const core = await addcor.findById(courseId);
        if(!core) return res.send('course not found');
-       res.render('UPDATEcourse',{core,dept:deptData})
+       res.render('UPDATEcourse',{core,deptData})
   })
 
   // recieved datas from updatecourse page and make save to database

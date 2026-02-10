@@ -55,6 +55,33 @@ router.get('/:deptId/:studId/grades',async(req,res)=>{
             res.send('could not show up ')
          }
 })
-   
+   //getting a an grade update page from an edit button 
+  router.get('/:deptId/:studId/:gradeId/GREDIT',async(req,res)=>{
+    const {deptId,studId,gradeId} = req.params;
+
+    const deptData = await dept.findById(deptId);
+    const grade = await Grade.findById(gradeId);
+   // const course = await cor.find({dept:deptId});
+    const studd = await stud.findById(studId).populate('course');
+    res.render('UPDATEgrade',{dept:deptData,stud:studd,course:studd.course,grade})
+})
+//getting a data from an update page and make save
+router.post('/:deptId/:gradeId/saved',async(req,res)=>{
+    const {deptId,gradeId} = req.params;
+     const {grade} = req.body;
+      try{
+        const grades = await Grade.findById(gradeId);
+         if(!grades){
+            return res.send('could not found the grade')
+         }
+         grades.grade = grade;
+         await grades.save();
+         return res.send('updated successfuly')
+
+      }catch(err){
+        console.log(err)
+        return res.send('somthing is wrong')
+      }
+})
 
 module.exports = router;

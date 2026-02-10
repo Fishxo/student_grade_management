@@ -1,0 +1,25 @@
+<h3>Update grade for <%= stud.studFname %></h3>
+
+<form action="/grade/<%= dept._id %>/<%= grade._id %>/saved" method="post">
+    <label>Course:</label>
+    <select name="courseId">
+        <% stud.course.forEach(c => { %>
+            <option value="<%= c._id %>" <%= c._id.equals(grade.course._id) ? 'selected' : '' %>>
+                <%= c.courseTitle %>
+            </option>
+        <% }) %>
+    </select>
+
+    <label>Grade:</label>
+    <select name="grade">
+        <option value="a+" <%= grade.grade==='a+'?'selected':'' %>>A+</option>
+        <option value="a" <%= grade.grade==='a'?'selected':'' %>>A</option>
+        <option value="a-" <%= grade.grade==='a-'?'selected':'' %>>A-</option>
+        <option value="b+" <%= grade.grade==='b+'?'selected':'' %>>B+</option>
+        <option value="b" <%= grade.grade==='b'?'selected':'' %>>B</option>
+        <option value="b-" <%= grade.grade==='b-'?'selected':'' %>>B-</option>
+        <option value="c" <%= grade.grade==='c'?'selected':'' %>>C</option>
+    </select>
+
+    <button type="submit">Update Grade</button>
+</form>

@@ -82,25 +82,55 @@ button:hover {
         <div class="container">
     <h2>Register Student</h2>
 
-    <form action="/studreg" method="post">
-        <label for="studFname">Student First Name</label>
-        <input type="text" name="studFname" required>
+    <form action="/studreg" id="studentForm" method="post">
+        
+    <label for="studFname">Student First Name</label>
+    <input type="text" id="studFname" name="studFname" required>
 
-        <label for="studSname">Student Second Name</label>
-        <input type="text" name="studSname" required>
+    <label for="studSname">Student Second Name</label>
+    <input type="text" id="studSname" name="studSname" required>
 
-        <label for="studEmail">Student Email</label>
-        <input type="email" name="studEmail" required>
+    <label for="studEmail">Student Email</label>
+    <input type="email" id="studEmail" name="studEmail" required>
+    
+    <label for="studPassword">Student Password</label>
+    <input type="text" id="studPassword" name="studPassword" required>
 
-        <label for="studDept">Student Department</label>
-        <input type="text" name="studDept" required>
+    <label for="studDept">Student Department</label>
+    <input type="text" id="studDept" name="studDept" required>
 
-        <label for="studyBatch">Study Batch</label>
-        <input type="text" name="studyBatch" required>
+    <label for="studyBatch">Study Batch</label>
+    <input type="text" id="studyBatch" name="studyBatch" required>
 
-        <button type="submit">Submit</button>
-    </form>
-</div>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById('studentForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // stop submission
+
+    const fname = document.getElementById('studFname').value.trim();
+    const sname = document.getElementById('studSname').value.trim();
+    const email = document.getElementById('studEmail').value.trim();
+    const password = document.getElementById('studPassword').value.trim();
+    const dept = document.getElementById('studDept').value.trim();
+    const batch = document.getElementById('studyBatch').value.trim();
+
+    if(fname.length < 2) { alert('First name must be at least 2 characters'); return; }
+    if(sname.length < 2) { alert('Second name must be at least 2 characters'); return; }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(email)) { alert('Enter a valid email'); return; }
+
+    if(password.length < 6) { alert('Password must be at least 6 characters'); return; }
+    if(dept.length < 2) { alert('Department must be at least 2 characters'); return; }
+    if(batch.length < 1) { alert('Batch cannot be empty'); return; }
+
+    this.submit(); // submit if all ok
+});
+</script>
+
+
 
 </body>
 </html>

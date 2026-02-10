@@ -26,7 +26,7 @@ const studentProfileRoutes = require('./route/studentProfile.route');
 const studentPRofileRoutes = require('./route/studentProfile.route');
 const studnetPROfileRoutes = require('./route/studentProfile.route');
 const studentPROFIleRoutes = require('./route/studentProfile.route');
-
+const GRADEeidtRoutes = require('./route/GRADESUBMITION.route');
 
 
 //using routes file
@@ -49,7 +49,8 @@ app.use('/studProfile',studentProfileRoutes)
 app.use('/studeGRADE',studentPRofileRoutes);
 app.use('/studCOURSE',studnetPROfileRoutes);
 app.use('/studCREDIT',studentPROFIleRoutes);
-
+app.use('/GRADEedit',GRADEeidtRoutes)
+         
 // making a connection to database
 mongoose.connect('mongodb://localhost:27017/student_grade_mgt_system')
 .then(()=>console.log('database connected successfully'))

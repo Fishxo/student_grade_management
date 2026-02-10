@@ -29,7 +29,7 @@ const dept = require('../models/newdpart');
       student.studyBatch = studyBatch;
 
       await student.save();
-      const deptData = await dept.findOne({ deptName: student.studDept });
+      const deptData = await dept.find({ deptName: student.studDept });
       console.log(studentId);
    return res.render('showBATCH',{ 
       stu: [student], 

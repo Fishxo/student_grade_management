@@ -68,27 +68,5 @@ router.get('/:deptId/:studId/credit',async(req,res)=>{
    }
 
 })
-//grtting a delete button to delete redendate course
-router.post('/:deptId/:studId/delet',async(req,res)=>{
-   const {deptId,studId} = req.params;
 
-         try{
-            const deptt = await dept.findById(deptId);
-            const student = await regstud.findById(studId);
-
-if (!student) {
-  return res.send('Student not found');
-}
-            // Remove duplicates
-            student.course = [...new Set(student.course.map(String))]; // unique IDs as strings
-            await student.save();
-
-            res.send('Duplicates removed successfully');
-            
-         }catch(err){
-            console.log(err)
-            res.send('could not delete course')
-         }
-
-})
 module.exports = router;

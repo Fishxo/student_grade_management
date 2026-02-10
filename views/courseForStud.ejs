@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Here are students courses for  department</h2>
+    <ul class="course-list">
+       
+        <% fetchcours.forEach(f => { %>
+            <li class="course-item">
+                <div class="course-info">
+                    <span class="course-title"><%= f.courseTitle %></span>
+                    <span class="course-code"><%= f.courseCode %></span>
+                </div>
+                
+                
+                
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

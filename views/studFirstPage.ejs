@@ -6,7 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>welcome to your new page</h1>
-    <form action="" method="get"></form>
+    <%= studs.studFname%> <%= studs.studSname%> in <%= studs.studDept%>
+    <h1>welcome to your new page </h1>
+    <form action="/studreg/<%= studs._id%>/update" method="post">
+        <button type="submit">update password</button>
+    </form>        
+    <form action="/studreg/<%= studs._id%>/fetchcourse" method="get">
+        <button type="submit">courses</button>
+    </form>
+    <form action="/studreg/takenCourse" method="get">
+        <button type="submit">taken course</button>
+    </form>
+    <form action="/studreg/grade" method="get">
+        <button type="submit">grade</button>
+    </form>
 </body>
 </html>

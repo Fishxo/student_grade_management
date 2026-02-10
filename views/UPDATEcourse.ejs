@@ -82,7 +82,7 @@ button:hover {
     <div class="container">
     <h2>Edit Course</h2>
 
-    <form action="/Cedit/<%= dept._id %>/<%= core._id %>/updatee" method="post">
+    <form action="/Cedit/<%= deptData._id %>/<%= core._id %>/updatee" method="post">
         <label for="courseTitle">Course Title</label>
         <input type="text" name="courseTitle" value="<%= core.courseTitle %>" required>
 

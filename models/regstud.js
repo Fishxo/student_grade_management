@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const studregSchema = mongoose.Schema({
     studFname : String,
     studSname : String,
-    studEmail : String,
+    studEmail : {type:String, required:true, unique:true},
+    studPassword : String,
     studDept  : String,
     studyBatch : String,
     course: [{

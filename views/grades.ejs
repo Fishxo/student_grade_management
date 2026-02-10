@@ -52,6 +52,9 @@
           <span><%= gr.course.courseTitle %></span>
           <strong><%= gr.grade %></strong>
         </div>
+        <form action="/GRADEedit/<%= deptData._id%>/<%= stude._id%>/<%= gr._id%>/GREDIT" method="get">
+          <button>edit</button>
+        </form>
       <% }) %>
     <% } else { %>
       <div class="no-grade">There is no grade</div>
