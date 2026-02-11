@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= stude.studFname %>'s Grades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1f3c88;
+            margin-bottom: 30px;
+        }
+
+        .grade-item {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 10px auto;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .grade-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .grade-item span {
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        .grade-item strong {
+            background-color: #1f3c88;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .no-grade {
+            text-align: center;
+            color: #888;
+            font-size: 1.1em;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 500px) {
+            .grade-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .grade-item strong {
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2><%= stude.studFname %>'s Grades</h2>
+
+    <% if (gradee.length > 0) { %>
+        <% gradee.forEach(gr => { %>
+            <div class="grade-item">
+                <span><%= gr.course.courseTitle %></span>
+                <strong><%= gr.grade %></strong>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <div class="no-grade">There is no grade</div>
+    <% } %>
+</body>
+</html>
