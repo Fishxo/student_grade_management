@@ -85,7 +85,21 @@ router.post('/',async(req,res)=>{
       }
  });
 
+// getting a student course credit page using button
+router.get('/:studId/credit',async(req,res)=>{
+   
+   const {deptId,studId} = req.params;
+   try{
+      const deptt = await dept.findById(deptId);
+      const stud = await studreg.findById(studId).populate('course')
 
+      res.render('COURSEcredit',{deptt,stud})
+   }catch(err){
+      console.log(err)
+      res.send('could not get courses credit page')
+   }
+
+})
 
 //fetching taken courses from student profile
  router.get('/:studId/takenCoursss',async(req,res)=>{
