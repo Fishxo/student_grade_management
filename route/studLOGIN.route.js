@@ -19,9 +19,7 @@ router.post('/',async(req,res)=>{
     }if(studs.studPassword !== studPassword){
         return res.send('sorry you use wrong password')
     }
-      if (studs.studDept !== studDept) {
-            return res.send('Sorry, wrong department');
-        }
+      
     
     return res.render('studFirstPage',{studs})
   }catch(error){

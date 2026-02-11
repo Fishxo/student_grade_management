@@ -3,22 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome h1 {
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .profile-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .profile-actions form {
+            flex: 1 1 200px;
+            max-width: 220px;
+        }
+
+        .profile-actions button {
+            width: 100%;
+            padding: 15px 0;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .profile-actions button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-info {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .profile-info span {
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        @media (max-width: 600px) {
+            .profile-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-actions form {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <%= studs.studFname%> <%= studs.studSname%> in <%= studs.studDept%>
-    <h1>welcome to your new page </h1>
-    <form action="/studreg/<%= studs._id%>/update" method="post">
-        <button type="submit">update password</button>
-    </form>        
-    <form action="/studreg/<%= studs._id%>/fetchcourse" method="get">
-        <button type="submit">courses</button>
-    </form>
-    <form action="/studreg/takenCourse" method="get">
-        <button type="submit">taken course</button>
-    </form>
-    <form action="/studreg/grade" method="get">
-        <button type="submit">grade</button>
-    </form>
+    <div class="container">
+        <div class="welcome">
+            <h1>Welcome, <%= studs.studFname %>!</h1>
+            <p><span><%= studs.studFname %> <%= studs.studSname %></span> in <span><%= studs.studDept %></span></p>
+        </div>
+
+        <div class="profile-actions">
+            <form action="/studreg/<%= studs._id %>/update" method="post">
+                <button type="submit">Update Password</button>
+            </form>
+            <form action="/studreg/<%= studs._id %>/fetchcourse" method="get">
+                <button type="submit">Courses</button>
+            </form>
+            <form action="/studreg/<%= studs._id %>/takenCoursss" method="get">
+                <button type="submit">Taken Courses</button>
+            </form>
+            <form action="/studreg/<%= studs._id %>/grades" method="get">
+                <button type="submit">Grades</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

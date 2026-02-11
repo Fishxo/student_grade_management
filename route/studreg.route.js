@@ -4,7 +4,7 @@ const studreg = require('../models/regstud');
 const adcor  = require('../models/addcourse');
 const dept = require('../models/newdpart')
 const mongoose = require('mongoose');
-
+const Grade = require('../models/grade');
 //getting student registeration page 
 
 router.get('/',(req,res)=>{
@@ -64,37 +64,31 @@ router.post('/',async(req,res)=>{
          res.send('sorry could not changed it')
         }
  })
- //getting a student course page 
-router.get('/:deptId/fetchcourse', async (req, res) => {
-    const { deptId } = req.params;
+ 
+//fetching those courses 
+ router.get('/:studId/fetchcourse',async(req,res)=>{
+        const {studId} = req.params;
+      try{
+        
+   const student = await studreg.findById(studId);
 
-    try {
-        // Find the department data first
-        const deptData = await dept.findById(deptId);
-        if (!deptData) {
-            return res.send('Department not found');
-        }
+   const department = await dept.findOne({ deptName: student.studDept });
 
-        // Fetch courses that belong to this department
-        const fetchC = await studcourse.find({ dept: deptId });
-        console.log("Dept ID received:", deptId);
+    const courses = await adcor.find({ dept: department._id });
 
-        // Render the page with courses specific to this department
-        res.render('courseForStud', {
-            fetchcours: fetchC,
-            dept: deptData
-        });
+       
 
-    } catch (error) {
-        console.log(error);
-        res.send('Sorry, could not fetch courses');
-    }
-});
+       return res.render('FetchingCourseFromSTUD',{fetchcours:courses,dept:department,stud:student})
+      }catch(error){
+        console.log(error)
+        return res.send('sorry could not make fetching')
+      }
+ });
 
 
 
-
- router.get('/:studId/fetchcours',async(req,res)=>{
+//fetching taken courses from student profile
+ router.get('/:studId/takenCoursss',async(req,res)=>{
         const {studId} = req.params;
         try{
           const studs = await studreg.findById(studId).populate('course')
@@ -107,6 +101,23 @@ router.get('/:deptId/fetchcourse', async (req, res) => {
           console.log(err)
           res.send('could not fetch')
         }
- })//fetching those courses 
+ })
+ //student getting their grade from their profile 
+ router.get('/:studId/grades',async(req,res)=>{
+     const {deptId,studId} = req.params;
+      
+ 
+          try{
+             const stude = await studreg.findById(studId);
+          const deptData = await dept.findById(deptId);
+         const gradee = await Grade.find({student:studId}).populate('course');
+         
+          res.render('GradesFromStuds',{stude,deptData,gradee})
+          
+          }catch(error){
+             console.log(error)
+             res.send('could not show up ')
+          }
+ })
 
 module.exports = router;
