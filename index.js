@@ -52,7 +52,8 @@ app.use('/studCREDIT',studentPROFIleRoutes);
 app.use('/GRADEedit',GRADEeidtRoutes)
          
 // making a connection to database
-mongoose.connect('mongodb://localhost:27017/student_grade_mgt_system')
+mongoose.connect("mongodb+srv://fish:12345@cluster0.ezepfnl.mongodb.net/student-grade-mgt-system")
+
 .then(()=>console.log('database connected successfully'))
 .catch((err)=>console.log(err))
 

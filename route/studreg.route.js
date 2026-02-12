@@ -9,7 +9,6 @@ const Grade = require('../models/grade');
 
 router.get('/',async(req,res)=>{
    
-      
          const depts = await dept.find() ;
       
     res.render('studreg',{depts})
