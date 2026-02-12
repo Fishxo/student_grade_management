@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const dept = require('../models/newdpart')
 const addcor = require('../models/addcourse')
+const studreg = require('../models/regstud');
+
  //getting an addnig course for every departments
  router.get('/:deptId/createCours',async(req,res)=>{
   
@@ -30,17 +32,19 @@ const addcor = require('../models/addcourse')
  
 //fetching those courses 
  router.get('/:deptId/fetchcourse',async(req,res)=>{
-        const deptId = req.params.deptId;
+        const {deptId,studId} = req.params;
       try{
         
     const deptData = await dept.findById(deptId)
        const fetchC = await addcor.find({dept:deptId});
-       return res.render('fetchcourse',{fetchcours:fetchC,dept:deptData})
+       const studd = await studreg.findById(studId).populate('course')
+
+       return res.render('fetchcourse',{fetchcours:fetchC,dept:deptData,stud:studd});
       }catch(error){
         console.log(error)
         return res.send('sorry could not make fetching')
       }
- })
+ });
 
   //getting an edit button and update page for course edit
   router.get('/:deptId/:courseId/Course',async(req,res)=>{

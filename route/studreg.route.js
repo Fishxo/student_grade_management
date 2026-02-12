@@ -7,8 +7,12 @@ const mongoose = require('mongoose');
 const Grade = require('../models/grade');
 //getting student registeration page 
 
-router.get('/',(req,res)=>{
-    res.render('studreg')
+router.get('/',async(req,res)=>{
+   
+      
+         const depts = await dept.find() ;
+      
+    res.render('studreg',{depts})
 })
 
 //saving students to database
@@ -70,7 +74,7 @@ router.post('/',async(req,res)=>{
         const {studId} = req.params;
       try{
         
-   const student = await studreg.findById(studId);
+   const student = await studreg.findById(studId).populate('course');
 
    const department = await dept.findOne({ deptName: student.studDept });
 

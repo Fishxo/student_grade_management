@@ -75,10 +75,22 @@ button:hover {
     background: #1e5fd1;
     transform: translateY(-2px);
 }
+#studentForm select {
+    width: 100%;          /* match the inputs */
+    padding: 10px;        /* same padding as inputs */
+    margin-bottom: 18px;  /* same spacing */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
 
     </style>
 </head>
 <body>
+
+   
         <div class="container">
     <h2>Register Student</h2>
 
@@ -95,9 +107,12 @@ button:hover {
     
     <label for="studPassword">Student Password</label>
     <input type="text" id="studPassword" name="studPassword" required>
-
-    <label for="studDept">Student Department</label>
-    <input type="text" id="studDept" name="studDept" required>
+  <label for="studDept">student department</label>
+   <select  id="studDept" name="studDept">
+     <% depts.forEach (s =>{%>
+        <option value="<%= s.deptName%>"> <%= s.deptName%></option>
+    <%})%>
+   </select>
 
     <label for="studyBatch">Study Batch</label>
     <input type="text" id="studyBatch" name="studyBatch" required>

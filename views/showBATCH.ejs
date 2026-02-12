@@ -102,9 +102,9 @@
            <form action="/deptt/<%= s._id%>/edit" method="get">
       <button>✏️</button>
     </form>
-        <form action="/deptt/<%= dept._id%>/<%= s._id%>/deletee" method="post">
-            <button type="submit" onclick="return confirm('are you sure to delete this user')">delete</button>
-        </form>
+        <form action="/deptt/<%= s._id%>/deletee" class="deleteForm" data-id="<%= s._id %>">
+  <button type="button">delete</button>
+</form>
         <form action="/assigncourse/<%= dept._id%>/<%= s._id%>/" method="get">
     <button type="submit">assign course</button>
 </form>
@@ -123,6 +123,27 @@
     <p>No students found</p>
   <% } %>
 <% } %>
+
+
+
+<script>
+document.querySelectorAll('.deleteForm').forEach(form => {
+  form.querySelector('button').addEventListener('click', async () => {
+    if (!confirm('Are you sure to delete this user')) return;
+
+    const studId = form.dataset.id;
+    const deptId = '<%= dept._id %>';
+
+    const res = await fetch(`/deptt/${deptId}/${studId}/deletee`, {
+      method: 'POST'
+    });
+
+    if (res.ok) {
+      form.closest('li').remove(); // remove student from page
+    }
+  });
+});
+</script>
 
 </body>
 </html>

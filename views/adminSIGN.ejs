@@ -5,88 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * /* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #1cc88a, #36b9cc);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 20px;
+  gap: 15px; /* space between heading and form card */
 }
 
-.container {
-    background: #ffffff;
-    padding: 40px 35px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    width: 350px;
+
+.card {
+  background: white;
+  padding: 25px 30px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;  /* stack inputs vertically */
+  gap: 15px;               /* space between each input group */
 }
 
-h3 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
+/* Each label + input pair spacing */
+.card label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+/* Inputs full width */
+.card input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: 0.3s;
 }
 
-label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #444;
+.card input:focus {
+  border-color: #2575fc;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,117,252,0.2);
 }
 
-input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    transition: 0.3s;
+/* Button styling */
+.card button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2575fc;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-input:focus {
-    border-color: #1cc88a;
-    outline: none;
-    box-shadow: 0 0 5px rgba(28,200,138,0.3);
+.card button:hover {
+  background: #1e5fd1;
+  transform: translateY(-2px);
 }
 
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #1cc88a;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
-}
 
-button:hover {
-    background-color: #17a673;
-}
-</style>
+    </style>
 
 </head>
 <body>
-    <h3>hello admin, welcome to signup form </h3>
-    <form action="/adminSIGN" method="post">
-        <label for="adminFirstname">admin first name </label><br>
-        <input type="text" name="adminFirstname" required><br>
-        <label for="adminSecondname">admin second name</label><br>
-        <input type="text" name="adminSecondname" required><br>
-        <label for="adminEmail">admin emai</label><br>
-        <input type="email" name="adminEmail"><br>
-        <label for="adminPassword"> admin password</label><br>
-        <input type="password" name="adminPassword" required><br>
-        <button type="submit">submit</button>
-    </form>
+   
+  <div class="cardd"><h3>hello admin, welcome to signup form</h3></div>
+<div class="card">
+  <form action="/adminSIGN" method="post" id="adminForm">
+    <label>admin first name</label>
+    <input type="text" name="adminFirstname" required>
+
+    <label>admin second name</label>
+    <input type="text" name="adminSecondname" required>
+
+    <label>admin email</label>
+    <input type="email" name="adminEmail">
+
+    <label>admin password</label>
+    <input type="password" name="adminPassword" required>
+
+    <button type="submit">submit</button>
+  </form>
+</div>
+
+    <script>
+document.getElementById("adminForm").addEventListener("submit", function(e) {
+  const fname = document.querySelector('[name="adminFirstname"]').value.trim();
+  const sname = document.querySelector('[name="adminSecondname"]').value.trim();
+  const email = document.querySelector('[name="adminEmail"]').value.trim();
+  const password = document.querySelector('[name="adminPassword"]').value.trim();
+
+  if (fname.length < 2) {
+    alert("First name must be at least 2 characters");
+    e.preventDefault();
+    return;
+  }
+
+  if (sname.length < 2) {
+    alert("Second name must be at least 2 characters");
+    e.preventDefault();
+    return;
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("Enter a valid email");
+    e.preventDefault();
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters");
+    e.preventDefault();
+    return;
+  }
+});
+</script>
+
 </body>
 </html>
