@@ -51,7 +51,7 @@ app.use('/studCOURSE',studnetPROfileRoutes);
 app.use('/studCREDIT',studentPROFIleRoutes);
 app.use('/GRADEedit',GRADEeidtRoutes)
          // making sure the server is ok 
-          app.get('/',(req,res){
+          app.get('/',(req,res)=>{
                    res.send('server is on live'))}
 // making a connection to database
 mongoose.connect("mongodb+srv://fish:12345@cluster0.ezepfnl.mongodb.net/student-grade-mgt-system")
